@@ -9,7 +9,7 @@ class Vehicle {
     }
 
     toString() {
-        return `The car '${this.carBrand}' has mileage '${this.mileage}`;
+        return `The car '${this.carBrand}' has mileage ${this.mileage}`;
     }
 }
 

@@ -1,9 +1,8 @@
 const prompt = require('prompt-promise');
 let Car = require('./vehicles/passengerCar');
 let Truck = require('./vehicles/truck');
-let TaxiStation = require('./taxiStation/taxiStation');
+let TaxiStationBuilder = require('./taxiStation/taxiStationBuilder');
 
-let taxiStation = new TaxiStation(true);
 let cars = [
     new Car('VW', 30000, 6),
     new Car('Audi', 12000, 3),
@@ -20,8 +19,10 @@ let trucks = [
     new Truck('Mercedes Benz', 100000, 22),
 ];
 
-taxiStation.addCarsPool(cars);
-taxiStation.addTrucksPool(trucks);
+let taxiStation = new TaxiStationBuilder()
+    .addPassangerCar(cars)
+    .addTruck(trucks)
+    .build();
 
 (async () => {
     const passengers = parseInt(await prompt('Enter number of passengers: '));
